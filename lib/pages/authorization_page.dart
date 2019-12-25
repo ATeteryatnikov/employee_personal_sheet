@@ -1,0 +1,14 @@
+import 'package:employee_personal_sheet/authorization/authorization.dart';
+import 'package:flutter/material.dart';
+
+class AuthorizationPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('demo'),
+      ),
+      body: Authorization(),
+    );
+  }
+}
