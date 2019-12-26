@@ -1,4 +1,4 @@
-import 'package:employee_personal_sheet/authorization/authorization.dart';
+import 'package:employee_personal_sheet/widgets/authorization.dart';
 import 'package:flutter/material.dart';
 
 class AuthorizationPage extends StatelessWidget {

@@ -35,3 +35,6 @@ lib/generated_plugin_registrant.dart
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+/lib/models/one_user_record.g.dart
+/lib/models/registry_users_records.g.dart
+/lib/models/user_characteristic.g.dart
