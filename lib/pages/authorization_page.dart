@@ -6,7 +6,7 @@ class AuthorizationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('demo'),
+        title: Text('Авторизация'),
       ),
       body: Authorization(),
     );

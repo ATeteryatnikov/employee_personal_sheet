@@ -4,6 +4,11 @@ part 'user_characteristic.g.dart';
 
 @JsonSerializable(nullable: false)
 class UserCharacteristic {
+  
+  static const String STRING_FiELD = 'String';
+  static const String DATE_FiELD = 'DateTime';
+  static const String LOCATION_FiELD = 'Location';
+  
   String field;
   String type;
   String value;

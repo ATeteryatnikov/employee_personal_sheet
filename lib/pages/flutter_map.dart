@@ -1,4 +1,3 @@
-import 'package:employee_personal_sheet/pages/user_registry-page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
@@ -8,14 +7,14 @@ class UserMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        SizedBox(
+          height: 20,
+        ),
         RaisedButton(
           onPressed: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) => UserRegistryPage()));
+            Navigator.pushReplacementNamed(context, '/registry');
           },
-          child: Text('Уйти из'),
+          child: Text('Выйти'),
         ),
         Flexible(
           child: new FlutterMap(

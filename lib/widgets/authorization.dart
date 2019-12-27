@@ -55,13 +55,9 @@ class Authorization extends StatelessWidget {
 
   authenticate(BuildContext context) {
     if (_submitForm()) {
-      AuthorizationService.connect(user.login, user.password)
-          .then((bool value) => {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => UserRegistryPage()))
-              });
+      AuthorizationService.connect(user.login, user.password).then(
+          (bool value) =>
+              {Navigator.pushReplacementNamed(context, '/registry')});
     }
   }
 }

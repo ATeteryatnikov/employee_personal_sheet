@@ -1,63 +1,61 @@
-import 'package:employee_personal_sheet/models/registry_users_records.dart';
-import 'package:employee_personal_sheet/pages/authorization_page.dart';
-import 'package:employee_personal_sheet/pages/flutter_map.dart';
+import 'package:employee_personal_sheet/models/one_user_record.dart';
+import 'package:employee_personal_sheet/scoped_models/users_model.dart';
 import 'package:employee_personal_sheet/services/users/users_service.dart';
+import 'package:employee_personal_sheet/widgets/app_drawer.dart';
+import 'package:employee_personal_sheet/widgets/user_item_registry.dart';
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class UserRegistryPage extends StatefulWidget {
-  final RegistryUserRecords users = new RegistryUserRecords();
+  final UsersModel usersModel;
+
+  UserRegistryPage(this.usersModel);
 
   @override
   State<StatefulWidget> createState() {
-    return _UserReestState();
+    return _UserRegistryPageState();
   }
 }
 
-class _UserReestState extends State<UserRegistryPage> {
+class _UserRegistryPageState extends State<UserRegistryPage> {
   @override
   Widget build(BuildContext context) {
-    UserService.getAllUsers()
-        .then((value) => {widget.users.users = value.users});
+    UserService.getAllUsers().then(
+        (usersRegistry) => {widget.usersModel.update(usersRegistry.users)});
 
     return Scaffold(
-        drawer: Drawer(
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 50.0,
-              ),
-              Card(
-                child: ListTile(
-                    title: Text('Страница авторизации'),
-                    onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  AuthorizationPage()));
-                    }),
-              ),
-              Card(
-                  child: ListTile(
-                title: Text("Карта"),
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => UserMap()));
-                },
-              ))
-            ],
-          ),
-        ),
-        appBar: AppBar(
-          title: Text('demo'),
-        ),
-        body: Column(children: <Widget>[Text('1212')],));
+      appBar: AppBar(
+        title: Text('Реестр'),
+      ),
+      drawer: AppDrawer(),
+      body: ScopedModelDescendant<UsersModel>(
+        builder: (BuildContext context, Widget child, UsersModel model) {
+          return _buildList(users: widget.usersModel.users);
+        },
+      ),
+    );
   }
 
-  Widget _buildUserItem(BuildContext context) {
-    print(context);
-    return Card(child: Text(context.toString()));
+  Widget _buildList({List<OneUserRecord> users = const []}) {
+    print('BuildList!!!!!!!\n');
+    if (users == null || users.length <= 0) {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: <Widget>[
+            Text('Нет пользователей!'),
+            SizedBox(
+              height: 350,
+            ),
+            Image.network(
+                'https://pngicon.ru/file/uploads/ljagushonok-pepe.png'),
+          ],
+        ),
+      );
+    }
+    return ListView(
+        children: users
+            .map((OneUserRecord element) => UserItemRegistry(users.indexOf(element),element))
+            .toList());
   }
 }
