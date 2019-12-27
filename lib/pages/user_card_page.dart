@@ -3,6 +3,7 @@ import 'package:employee_personal_sheet/models/user_characteristic.dart';
 import 'package:employee_personal_sheet/widgets/app_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class UserCardPage extends StatefulWidget {
   final OneUserRecord user;
@@ -26,6 +27,7 @@ class _UserCardState extends State<UserCardPage> {
       body: ListView(
         children: <Widget>[
           _buildHeader(),
+          SizedBox(height: 20,),
           _buildDynamicFields(),
           //UserMap()
         ],
@@ -120,7 +122,12 @@ class _UserCardState extends State<UserCardPage> {
                 'ТИП Календарь',
                 style: TextStyle(fontSize: 10),
               ),
-              Text(characteristic.field + ':'),
+              RaisedButton(
+                child: Text(characteristic.field),
+                onPressed: () {
+                  DatePicker.showDatePicker(context);
+                },
+              ),
             ],
           ),
         );

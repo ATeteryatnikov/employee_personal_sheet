@@ -4,6 +4,7 @@ import 'package:employee_personal_sheet/pages/authorization_page.dart';
 import 'package:employee_personal_sheet/pages/flutter_map.dart';
 import 'package:employee_personal_sheet/pages/user_card_page.dart';
 import 'package:employee_personal_sheet/pages/user_registry-page.dart';
+import 'package:employee_personal_sheet/pages/web_camera.dart';
 import 'package:employee_personal_sheet/scoped_models/users_model.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -27,6 +28,7 @@ class MainPage extends StatelessWidget {
             '/': (BuildContext context) => AuthorizationPage(),
             '/registry': (BuildContext context) => UserRegistryPage(usersModel),
             '/map': (BuildContext context) => UserMap(),
+            '/camerah264': (BuildContext context) => WebCamera(),
           },
           onGenerateRoute: (RouteSettings settings) {
             final List<String> pathElements = settings.name.split('/');

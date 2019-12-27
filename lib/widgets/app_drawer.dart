@@ -29,6 +29,13 @@ class AppDrawer extends StatelessWidget {
                 onTap: () {
                   Navigator.pushReplacementNamed(context, '/registry');
                 },
+              )),
+          Card(
+              child: ListTile(
+                title: Text("Камера"),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, '/camerah264');
+                },
               ))
         ],
       ),

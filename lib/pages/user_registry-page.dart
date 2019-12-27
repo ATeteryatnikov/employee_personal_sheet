@@ -45,10 +45,10 @@ class _UserRegistryPageState extends State<UserRegistryPage> {
           children: <Widget>[
             Text('Нет пользователей!'),
             SizedBox(
-              height: 350,
+              height: 400,
             ),
             Image.network(
-                'https://pngicon.ru/file/uploads/ljagushonok-pepe.png'),
+                'https://pngicon.ru/file/uploads/ljagushonok-pepe.png', width: 100, height: 100,),
           ],
         ),
       );
