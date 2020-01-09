@@ -17,12 +17,9 @@ class UserRegistryPage extends StatefulWidget {
   }
 }
 
-class _UserRegistryPageState extends State<UserRegistryPage> {
+class _UserRegistryPageState extends State<UserRegistryPage> {  
   @override
   Widget build(BuildContext context) {
-    UserService.getAllUsers().then(
-        (usersRegistry) => {widget.usersModel.update(usersRegistry.users)});
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Реестр'),
@@ -34,6 +31,14 @@ class _UserRegistryPageState extends State<UserRegistryPage> {
         },
       ),
     );
+  }
+
+  @override
+  void initState() {
+    UserService.getAllUsers().then(
+            (usersRegistry) => {widget.usersModel.update(usersRegistry.users)});
+    
+    super.initState();
   }
 
   Widget _buildList({List<OneUserRecord> users = const []}) {

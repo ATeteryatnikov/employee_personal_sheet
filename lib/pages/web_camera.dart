@@ -1,3 +1,4 @@
+import 'package:employee_personal_sheet/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -27,6 +28,7 @@ class WebCameraState extends State<WebCamera> {
     return MaterialApp(
       title: 'Video Demo',
       home: Scaffold(
+        drawer: AppDrawer(),
         body: Center(
           child: _controller.value.initialized
               ? AspectRatio(

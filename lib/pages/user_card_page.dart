@@ -21,7 +21,7 @@ class _UserCardState extends State<UserCardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Реестр'),
+        title: Text('Карточка пользователя'),
       ),
       drawer: AppDrawer(),
       body: ListView(
@@ -39,27 +39,27 @@ class _UserCardState extends State<UserCardPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
+        SizedBox(width: 50,),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            SizedBox(height: 10,),
             Text(
-              "Имя пользователя",
+              "Имя пользователя:",
               style: TextStyle(color: Colors.grey),
-            ),
-            SizedBox(
-              height: 5,
+              textAlign: TextAlign.right,
             ),
             Text(
-              "Адрес",
+              "Адрес:",
               style: TextStyle(color: Colors.grey),
             ),
           ],
         ),
         Column(
           children: <Widget>[
+            SizedBox(height: 10,),
             Text(widget.user.name),
-            SizedBox(
-              height: 5,
-            ),
+            
             Text(widget.user.address),
           ],
         ),
